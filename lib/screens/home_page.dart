@@ -42,7 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 10),
             Text('Total Time: $totalTime hours'),
             SizedBox(height: 10),
-            Text('Entries:'),
+            Text('Entries:', style: TextStyle(fontWeight: FontWeight.bold, 
+              color: entries.length > 0 ? Colors.red : Colors.black,)),
             Expanded(
               child: ListView.builder(
                 itemCount: entries.length,

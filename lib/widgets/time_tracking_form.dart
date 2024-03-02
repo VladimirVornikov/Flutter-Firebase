@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/time_entry.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+import 'package:intl/intl.dart';
+
 
 class TimeTrackingForm extends StatefulWidget {
   final Function(TimeEntry) addEntry;
@@ -14,11 +17,14 @@ class _TimeTrackingFormState extends State<TimeTrackingForm> {
   late String description;
   late String duration;
   late String userDate;
+  late String formattedDate;
 
   _TimeTrackingFormState() {
     description = '';
     duration = '';
     userDate = '';
+    DateTime now = DateTime.now();
+    formattedDate = DateFormat('yyyy-MM-dd').format(now);
   }
 
   @override
@@ -35,7 +41,7 @@ class _TimeTrackingFormState extends State<TimeTrackingForm> {
               });
             },
             items: [
-              DropdownMenuItem(value: '', child: Text('by default')),
+              DropdownMenuItem(value: '', child: Text('Choose your activity')),
               DropdownMenuItem(value: 'Work', child: Text('Work')),
               DropdownMenuItem(value: 'Study', child: Text('Study')),
               DropdownMenuItem(value: 'Free time', child: Text('Free time')),
@@ -51,18 +57,26 @@ class _TimeTrackingFormState extends State<TimeTrackingForm> {
               });
             },
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(labelText: 'Duration (hours)'),
+            decoration: InputDecoration(labelText: 'Duration (hours 1-24)'),
           ),
-          TextFormField(
+
+          DateTimePicker(
             initialValue: userDate,
+            firstDate: DateTime(2000),
+            lastDate: DateTime.parse(formattedDate),
+            dateLabelText: 'Date',
             onChanged: (value) {
               setState(() {
                 userDate = value;
               });
             },
-            keyboardType: TextInputType.datetime,
-            decoration: InputDecoration(labelText: 'Date'),
+            validator: (val) {
+              print(val);
+              return null;
+            },
+            onSaved: (val) => print(val),
           ),
+
           Padding(padding: 
             EdgeInsets.only(top: 10, bottom: 10)),
           ElevatedButton(
