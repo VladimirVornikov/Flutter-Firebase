@@ -25,7 +25,7 @@ class _TimeTrackingFormState extends State<TimeTrackingForm> {
   Widget build(BuildContext context) {
     return Form(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DropdownButton<String>(
             value: description,
@@ -63,6 +63,8 @@ class _TimeTrackingFormState extends State<TimeTrackingForm> {
             keyboardType: TextInputType.datetime,
             decoration: InputDecoration(labelText: 'Date'),
           ),
+          Padding(padding: 
+            EdgeInsets.only(top: 10, bottom: 10)),
           ElevatedButton(
             onPressed: () {
               if (description.isNotEmpty && duration.isNotEmpty && userDate.isNotEmpty) {
@@ -78,6 +80,8 @@ class _TimeTrackingFormState extends State<TimeTrackingForm> {
               }
             },
             child: Text('Add Entry'),
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20)),
           ),
         ],
       ),

@@ -30,24 +30,30 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Time Tracking App'),
+        title: Text('Time Tracking App', style: TextStyle(color: Colors.red)),
+        backgroundColor: Colors.black,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TimeTrackingForm(addEntry: addEntry),
-          Text('Total Time: $totalTime hours'),
-          Text('Entries:'),
-          Expanded(
-            child: ListView.builder(
-              itemCount: entries.length,
-              itemBuilder: (context, index) => TimeEntryWidget(
-                entry: entries[index],
-                onDelete: () => deleteActivity(index),
+      body: Padding(
+        padding: EdgeInsets.only(left: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TimeTrackingForm(addEntry: addEntry),
+            SizedBox(height: 10),
+            Text('Total Time: $totalTime hours'),
+            SizedBox(height: 10),
+            Text('Entries:'),
+            Expanded(
+              child: ListView.builder(
+                itemCount: entries.length,
+                itemBuilder: (context, index) => TimeEntryWidget(
+                  entry: entries[index],
+                  onDelete: () => deleteActivity(index),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
