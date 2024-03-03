@@ -79,6 +79,7 @@ class _TimeTrackingFormState extends State<TimeTrackingForm> {
 
           Padding(padding: 
             EdgeInsets.only(top: 10, bottom: 10)),
+
           ElevatedButton(
             onPressed: () {
               if (description.isNotEmpty && duration.isNotEmpty && userDate.isNotEmpty) {
