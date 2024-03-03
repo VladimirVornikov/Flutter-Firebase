@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void sortBySelect(selectedFilter) {
     List<TimeEntry> filteredEntries;
-
+    
     switch (selectedFilter) {
       case 'Last week':
         filteredEntries = originalEntries.where((entry) => isWithinDuration(entry, 7)).toList();
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         filteredEntries = originalEntries.where((entry) => isWithinDuration(entry, 365)).toList();
         break;
       default:
-        filteredEntries = List.from(originalEntries); // Copy the original list
+        filteredEntries = List.from(originalEntries); 
     }
 
     filteredEntries.sort((a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
