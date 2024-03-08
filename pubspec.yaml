@@ -27,6 +27,9 @@ dependencies:
   flutter_redux: ^0.10.0
   redux: ^5.0.0
   date_time_picker: "^2.1.0"
+  cloud_firestore: ^4.14.0
+  firebase_storage: ^11.6.0
+  firebase_auth: ^4.16.0
 
 dev_dependencies:
   flutter_test:
