@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker/firebase_storage_service.dart';
 import '../models/time_entry.dart';
 import '../widgets/time_entry_widget.dart';
 import '../widgets/time_tracking_form.dart';
@@ -17,6 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void addEntry(TimeEntry entry) {
     setState(() {
       originalEntries.add(entry);
+      uploadFile(originalEntries);
       sortBySelect(selectedFilter);
     });
   }
